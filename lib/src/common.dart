@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:alex_astudillo_erp/app/services/local_data_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 
@@ -96,13 +98,36 @@ class DefaultResponse {
 /// The HTTP base client to manage the request.
 class HttpBaseClient extends BaseClient {
   /// Define a [HttpBaseClient]
-  HttpBaseClient(this.client);
+  HttpBaseClient(
+    this.client,
+    this.localDataService,
+  );
 
   /// The singleton client while app is active.
   final Client client;
+  final LocalDataService localDataService;
 
   @override
-  Future<StreamedResponse> send(BaseRequest request) {
+  Future<StreamedResponse> send(BaseRequest request) async {
+    // Get and set token to header requests.
+    final String? token = await localDataService.jwt;
+    if (token != null) {
+      request.headers.addAll({
+        HttpHeaders.authorizationHeader: token,
+      });
+    }
+    // Set accept header.
+    if (!request.headers.containsKey(HttpHeaders.acceptHeader)) {
+      request.headers.addAll({HttpHeaders.acceptHeader: 'application/json'});
+    }
+    // Set content type.
+    if (!request.headers.containsKey(HttpHeaders.contentTypeHeader) ||
+        request.headers[HttpHeaders.contentTypeHeader]!
+            .contains('text/plain')) {
+      request.headers.addAll({
+        HttpHeaders.contentTypeHeader: 'application/json; charset=UTF-8',
+      });
+    }
     return client.send(request);
   }
 
@@ -120,6 +145,20 @@ class HttpBaseClient extends BaseClient {
     if (kIsWeb) return _fromJson(data);
     return compute(_fromJson, data);
   }
+}
+
+/// Class to manage HTTP exceptions.
+class HttpException implements Exception {
+  const HttpException({
+    required this.code,
+    required this.message,
+  });
+
+  /// The HTTP code.
+  final int code;
+
+  /// The message of exception.
+  final String message;
 }
 
 /// Used to separate the conversion on isolates.
