@@ -1,3 +1,4 @@
+import 'package:alex_astudillo_erp/ui/pages/sign_in/widgets/sign_in_form.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatelessWidget {
@@ -5,6 +6,10 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: SafeArea(
+        child: SignInForm(),
+      ),
+    );
   }
 }

@@ -1,8 +1,10 @@
+import 'package:alex_astudillo_erp/app/services/get_it_service.dart';
 import 'package:alex_astudillo_erp/ui/routes/route_page.dart';
 import 'package:alex_astudillo_erp/ui/theme/app_theme_data.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  setupGetIt();
   runApp(const MyApp());
 }
 

@@ -3,4 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInCubit extends Cubit<SignInState> {
   SignInCubit() : super(const SignInState());
+
+  @override
+  Future<void> close() {
+    // TODO: implement close
+    return super.close();
+  }
 }
