@@ -1,0 +1,22 @@
+{
+    "accountExistsWithDifferentCredential": "La cuenta existe con otras credenciales",
+    "alreadyExistsCompanyWithThatIdCard": "Ya existe la empresa con esa identificación",
+    "doNotHaveAnAccount": "¿No tienes una cuenta?",
+    "email": "Correo electrónico",
+    "emailAlreadyInUse": "El email ya está en uso",
+    "enterYourCredentialsToContinue": "Ingresa tus credenciales para continuar",
+    "establishmentAddressIsRequired": "La dirección del establecimeiento es requerida",
+    "expiredAccount": "Cuenta caducada",
+    "expiredActionCode": "Código de acción caducado",
+    "expiredCredential": "Credenciales caducadas",
+    "forbidden": "Prohibido",
+    "forgotPassword": "¿Has olvidado tu contraseña?",
+    "idCardAlreadyExists": "Ya existe la idenficación",
+    "invalidCompanyName": "Nombre de la empresa no válido",
+    "password": "Contraseña",
+    "signIn": "Iniciar sesión",
+    "registerNow": "Regístrate ahora",
+    "userNotFound": "Usuario no encontrado",
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "wrongPassword": "Contraseña incorrecta"
+}

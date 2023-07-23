@@ -19,7 +19,7 @@ class UserHttpRepository implements IUserRepository {
   Future<DefaultResponse> signIn(String username, String password) async {
     final Response response = await client.post(
       Uri.parse('${client.baseV1URL}/user/sign-in'),
-      body: client.parseToJson({
+      body: await client.parseToJson({
         'username': username,
         'password': password,
       }),

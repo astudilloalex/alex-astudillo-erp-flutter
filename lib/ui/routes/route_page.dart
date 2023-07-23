@@ -1,3 +1,5 @@
+import 'package:alex_astudillo_erp/app/services/get_it_service.dart';
+import 'package:alex_astudillo_erp/src/user/application/user_service.dart';
 import 'package:alex_astudillo_erp/ui/pages/pages.dart';
 import 'package:alex_astudillo_erp/ui/pages/sign_in/cubit/sign_in_cubit.dart';
 import 'package:alex_astudillo_erp/ui/pages/sign_in/sign_in_page.dart';
@@ -20,7 +22,9 @@ class RoutePage {
         name: RouteName.signIn,
         path: RouteName.signIn,
         builder: (context, state) => BlocProvider(
-          create: (context) => SignInCubit(),
+          create: (context) => SignInCubit(
+            userService: getIt<UserService>(),
+          ),
           child: const SignInPage(),
         ),
       ),

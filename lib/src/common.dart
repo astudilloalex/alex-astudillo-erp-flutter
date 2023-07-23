@@ -132,7 +132,7 @@ class HttpBaseClient extends BaseClient {
   }
 
   /// The URL for API first version.
-  String get baseV1URL => 'http://localhost:5034/api/v1';
+  String get baseV1URL => 'http://10.0.2.2:5034/api/v1';
 
   /// Parse [data] map to json with isolates.
   Future<String> parseToJson(Map<String, dynamic> data) async {
